@@ -15,7 +15,7 @@ orientacao_atual = Quaternion(x=0,y=0,z=0,w=0)
 posicao_objetivo = Point(x = 5, y = 5)
 posicao_atual = Point(0,0,0);
 
-posicao = 1
+posicao = 2
 
 os.chdir(r'/home/guilherme/catkin_ws/src/novo_pacote_teste_lego_team/node')
 
@@ -74,13 +74,13 @@ class FollowTheGap(object):
 		#velocidade = Kerro*abs(erro)+K*distancia_objetivo/27
 		global posicao
 		velocidade = 4
-
-		if(distancia_objetivo < 0.5):
-			novo_objetivo = ler_csv(posicao)
-			posicao = posicao + 1
-			posicao_objetivo = Point(x = novo_objetivo(1), y = novo_objetivo(2))
-
 		
+		if(distancia_objetivo < 0.5):			
+			posicao = posicao + 1
+
+		novo_objetivo = ler_csv(posicao)
+		posicao_objetivo = Point(x = novo_objetivo[0], y = novo_objetivo[1])
+						
 		#if(distancia_objetivo < 0.5):
 		#	if(posicao == 1):
 		#		posicao_objetivo = Point(x = 15, y = 9)
